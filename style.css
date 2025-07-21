@@ -1,0 +1,364 @@
+/* Genel ayarlar */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Siyah oyuncunun başlık yazısı beyaz olacak */
+#black-player h2 {
+    color: white;
+}
+
+/* Beyaz oyuncunun başlık yazısı siyah olacak */
+#white-player h2 {
+    color: black;
+}
+
+h1 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+h2 {
+    font-size: 1.2em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+
+h3 {
+    font-size: 1.5em;
+    color: #555;
+    margin-top: 20px;
+}
+
+/* Vido ve skor panosu çerçeve */
+#scoreboard {
+    border: 2px solid #333;
+    border-radius: 10px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    transition: all 0.5s ease;
+}
+
+/* Vido küpü ve yazısını yan yana hizala */
+#vido-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#vido-text {
+    font-size: 1.5em;
+    margin-right: 10px;
+    color: #333;
+}
+
+.vidocube {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 1px;
+    color: #1d72b8;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    transition: transform 0.5s ease; /* Yumuşak dönüş animasyonu */
+}
+
+.vidocube.spin {
+    transform: rotate(360deg); /* Zar döner */
+}
+
+/* Oyuncu alanları */
+#black-player {
+    background-color: #333; /* Koyu gri ton */
+    color: white; /* Beyaz yazı */
+}
+
+#white-player {
+    background-color: #f0f0f0; /* Açık gri ton */
+    color: black; /* Siyah yazı */
+}
+
+#players {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.player {
+    width: 45%;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.player p {
+    font-size: 1.5em;
+    color: inherit;
+}
+
+.buttons {
+    margin-top: 10px;
+}
+
+button {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+    transition: all 0.3s ease; /* Yumuşak geçiş */  
+    margin: 5px;
+    padding: 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px); /* Hover sırasında buton hafifçe yukarı kalkar */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* Daha derin gölge */
+    transform: scale(1.1);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#accept, #game-accept {
+    background-color: #28a745;
+    color: white;
+}
+
+#reject, #game-reject {
+    background-color: #dc3545;
+    color: white;
+}
+
+#counter {
+    background-color: #ffc107;
+    color: white;
+}
+
+/* Modal pencere stili */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-content button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 30%; /* Buton genişliğini yüzdelik olarak ayarlıyoruz */
+    min-width: 50px; /* Minimum genişlik, böylece butonlar dar ekranlarda aynı boyutta kalır */
+    max-width: 70px; /* Maksimum genişlik sınırı */
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Yatayda ortala (Flexbox ile) */
+    align-items: center; /* Dikeyde ortala (Flexbox ile) */
+}
+
+/* Modal görünür hale geldiğinde */
+.modal.show {
+    display: block;
+}
+
+/* Parti ve Toplam Skorlar */
+#party-history, #total-score {
+    margin-top: 20px;
+}
+
+#party-scores, #total-score-table {
+    border-collapse: collapse;
+    margin: 20px auto;
+    width: 90%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Tabloya gölge ekliyoruz */
+}
+
+#party-scores th, #total-score-table th {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+#party-scores td, #total-score-table td {
+    padding: 10px;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+td {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+#total-score-table {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Mobil uyumlu düzen */
+@media only screen and (max-width: 768px) {
+    body {
+        padding: 0 10px;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    .vidocube {
+        font-size: 1.5em;
+        padding: 8px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .player {
+        width: 45%;
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    button {
+        width: 70px;
+        padding: 10px 10px;
+        font-size: 1.5em;
+    }
+  
+     #button_alt button {
+        width: 70px;
+        padding: 10px 10px;
+        font-size: 1em;
+    }
+
+    table {
+        width: 100%;
+    }
+}
+
+#player-names {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#player-names input {
+    margin: 10px;
+    padding: 5px;
+    font-size: 0.8em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100px;
+}
+
+#player-names button {
+    margin-left: 10px;
+    padding: 5px 15px;
+    font-size: 0.8em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#player-names button:hover {
+    background-color: #0056b3;
+}
+
+/* iOS için durum çubuğu rengini ayarlama */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black; /* Siyah arka plan */
+    }
+}
+
+html {
+    background-color: black; /* iOS PWA kenarlıkları için siyah */
+}
+
+.fixed-toolbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center; /* İçerikleri ortalayalım */
+    z-index: 1000;
+    font-size: 1.2em;
+}
+
+#sound-toggle img {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#sound-toggle:hover img {
+    transform: scale(1.1); /* İkon hafifçe büyür */
+    opacity: 0.8; /* Hafif transparanlık */
+}

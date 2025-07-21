@@ -1,0 +1,21 @@
+{
+  "name": "Tavla Skorbord",
+  "short_name": "Tavla",
+  "description": "Arkadaşlar arasında kullanılan tavla skorbordu.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007bff",
+  "icons": [
+    {
+      "src": "https://cdn.glitch.global/99d85125-6109-4370-a05e-21b4aeb697f9/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://cdn.glitch.global/99d85125-6109-4370-a05e-21b4aeb697f9/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

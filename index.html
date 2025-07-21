@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tavla Skorbord</title>
+    <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="/manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="scoreboard">
+        <!-- Vido değeri yan yana gösteriliyor -->
+        <div id="vido-container">
+            
+            <div id="vido" class="vidocube">
+                <span id="vido-value">1</span>
+            </div>
+        </div>
+
+        <!-- Oyuncular -->
+        <div id="players">
+            <div id="black-player" class="player">
+                <h2>Siyah</h2>
+                <p>Skor: <span id="black-score">0</span></p>
+                <div class="buttons">
+                    <button id="black-vido" onclick="vido('black')">Vido</button>
+                    <button id="black-oyun" onclick="oyun('black')">Oyun</button>
+                    <button id="black-mars" onclick="mars('black')">Mars</button>
+                    <button id="black-3luk" onclick="threex('black')">3'lük</button>
+                </div>
+            </div>
+
+            <div id="white-player" class="player">
+                <h2>Beyaz</h2>
+                <p>Skor: <span id="white-score">0</span></p>
+                <div class="buttons">
+                    <button id="white-vido" onclick="vido('white')">Vido</button>
+                    <button id="white-oyun" onclick="oyun('white')">Oyun</button>
+                    <button id="white-mars" onclick="mars('white')">Mars</button>
+                    <button id="white-3luk" onclick="threex('white')">3'lük</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kabul, Red, Kontür Butonları için Modal (Vido işlemi için) -->
+        <div id="vido-modal" class="modal">
+            <div class="modal-content">
+                <p id="vido-message"></p> <!-- Dinamik mesaj burada görünecek -->
+                <br>
+                <button id="accept" onclick="handleVidoAction('kabul')">Kabul</button>
+                <button id="reject" onclick="handleVidoAction('red')">Red</button>
+                <button id="counter" onclick="handleVidoAction('kontur')">Kontr</button>
+            </div>
+        </div>
+
+        <!-- Oyun, Mars, 3'lük Kabul ve Red Butonları (Modal olarak açılacak) -->
+        <div id="game-modal" class="modal">
+            <div class="modal-content">
+                <p id="game-message"></p> <!-- Dinamik mesaj burada görünecek -->
+                <button id="game-accept" onclick="handleGameAction('kabul')">Kabul</button>
+                <button id="game-reject" onclick="handleGameAction('red')">Red</button>
+            </div>
+        </div>
+
+        <!-- Partiyi Bitir, Geri Al, Sıfırla Butonları -->
+        <div id="button_alt">
+            <button  id="finish-party" onclick="finishParty()">Partiyi Bitir</button>
+            <button  id="undo-action" onclick="undoLastAction()">İşlemi Geri Al</button>
+            <button  id="reset-all" onclick="resetAll()">Tabloyu Sıfırla</button>
+        </div>
+
+        <!-- Parti Skorları Tablosu -->
+        <div id="party-history">
+            <h3>Parti Skorları</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parti No</th>
+                        <th>Siyah Skor</th>
+                        <th>Beyaz Skor</th>
+                    </tr>
+                </thead>
+                <tbody id="party-scores">
+                    <!-- Parti skorları burada görünecek -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Toplam Skor Tablosu -->
+        <div id="total-score">
+            <h3>Toplam Skor</h3>
+            <table id="total-score-table">
+                <tr>
+                    <td>Siyah Toplam</td>
+                    <td><span id="total-black-score">0</span></td>
+                </tr>
+                <tr>
+                    <td>Beyaz Toplam</td>
+                    <td><span id="total-white-score">0</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Oyuncu isimlerini değiştirme alanı -->
+        <div id="player-names">
+            <label for="black-name"></label>
+            <input type="text" id="black-name" placeholder="Siyah oyuncu">
+            <label for="white-name"></label>
+            <input type="text" id="white-name" placeholder="Beyaz oyuncu">
+            <button onclick="updatePlayerNames()">Güncelle</button>
+        </div>
+        <div id="sound-toggle-container" style="margin-top: 20px;">
+            <button id="sound-toggle" onclick="toggleSound()">
+            <img id="sound-icon" src="https://cdn.glitch.global/99d85125-6109-4370-a05e-21b4aeb697f9/sound-on.png" alt="Ses Açık" width="30">
+            </button>
+        </div>
+      
+        <p style="text-align: center; font-size: 0.8em; margin-top: 20px;">
+    Bu skorbord, ChatGPT ve Genç'in işbirliğiyle ustalıkla yoğruldu. 🎲 "Vido" demekten çekinmeyin, biz hep kabul ederiz! 😉
+        </p>
+    </div>
+
+    <script src="app.js"></script>
+
+
+</body>
+</html>
