@@ -124,6 +124,17 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
+        console.log('ServiceWorker kaydedildi:', registration.scope);
+      }, function (err) {
+        console.log('ServiceWorker kaydedilemedi:', err);
+      });
+    });
+  }
+</script>
 
 
 </body>
